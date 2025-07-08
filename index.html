@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>iOS App 安装与下载</title>
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <style>
     body { font-family: Arial, sans-serif; padding: 40px; background: #f7f7f7; }
     .app-block { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #eee; margin-bottom: 30px; padding: 24px; }
@@ -21,9 +24,17 @@
       transition: background 0.2s;
     }
     button:hover, a.download-btn:hover { background: #005bb5; }
+    .qr-block { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #eee; padding: 24px; margin-bottom: 30px; text-align: center; }
+    .qr-block p { margin-bottom: 12px; }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
 </head>
 <body>
+  <div class="qr-block">
+    <p>当前页面二维码（可用微信/浏览器扫码访问）</p>
+    <canvas id="qrcode"></canvas>
+    <div id="qr-url" style="margin-top:8px;color:#888;font-size:14px;"></div>
+  </div>
   <div class="app-block">
     <h2>App 1: ebcgroup</h2>
     <button onclick="window.location.href='itms-services://?action=download-manifest&url=https://tsdaodao.github.io/apps/DistributionSummaryecb.plist'">安装</button>
@@ -34,5 +45,16 @@
     <button onclick="window.location.href='itms-services://?action=download-manifest&url=https://tsdaodao.github.io/apps/DistributionSummaryhunyun.plist'">安装</button>
     <a class="download-btn" href="hengyun.ipa" download>下载</a>
   </div>
+  <script>
+    // 生成当前页面 URL 的二维码
+    var url = window.location.href;
+    var qr = new QRious({
+      element: document.getElementById('qrcode'),
+      value: url,
+      size: 180,
+      level: 'H'
+    });
+    document.getElementById('qr-url').textContent = url;
+  </script>
 </body>
 </html>
