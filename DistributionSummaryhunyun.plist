@@ -17,7 +17,7 @@
 			<key>metadata</key>
 			<dict>
 				<key>bundle-identifier</key>
-				<string>FGH2CC4LW3.com.packpro.hengyun</string>
+				<string>com.packpro.hengyun</string>
 				<key>bundle-version</key>
 				<string>1.0</string>
 				<key>kind</key>
